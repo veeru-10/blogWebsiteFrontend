@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@theme {
+  
+}
+
+@layer base{
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background : #e2e8f0;
+    color: rgba(0, 0, 0, 0.742);
+    min-height: 100vh;
+  }
+}
