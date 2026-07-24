@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
 
   const fetchProfile = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/api/profile", { withCredentials: true });
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/profile`, { withCredentials: true });
       setProfile(response.data);
       return response.data;
     } catch (error) {
@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      await axios.post("http://localhost:8080/api/logout", {}, { withCredentials: true });
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/logout`, {}, { withCredentials: true });
     } catch (err) {
       console.error("Logout request error details:", err);
     } finally {

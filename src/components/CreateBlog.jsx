@@ -23,7 +23,7 @@ const CreateBlog = () => {
       formData.append("description", description);
       if (image) formData.append("image", image);
 
-      await axios.post("http://localhost:8080/api/blogs", formData, {
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/blogs`, formData, {
         withCredentials: true, //here also
         headers: { "Content-Type": "multipart/form-data" },
       });

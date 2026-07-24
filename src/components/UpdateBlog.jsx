@@ -6,7 +6,7 @@ import axios from "axios";
 const UpdateBlog = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { blog, loading, error } = useFetchBlog(`http://localhost:8080/api/blogs/${id}`);
+  const { blog, loading, error } = useFetchBlog(`${import.meta.env.VITE_API_URL}/api/blogs/${id}`);
 
   const actualBlog = blog?.blog || {};
 
@@ -32,7 +32,7 @@ const UpdateBlog = () => {
       formData.append('category', category);
       if (image) formData.append('image', image);
 
-      await axios.put(`http://localhost:8080/api/blogs/${id}`, formData, {
+      await axios.put(`${import.meta.env.VITE_API_URL}/api/blogs/${id}`, formData, {
         withCredentials: true,
         headers: { 'Content-Type': 'multipart/form-data' },
       });

@@ -4,7 +4,7 @@ import axios from 'axios';
 
 
 const BlogsListComponent = () => {
-  const { blogs, loading, error } = useFetchBlogs("http://localhost:8080/api/blogs");
+  const { blogs, loading, error } = useFetchBlogs(`${import.meta.env.VITE_API_URL}/api/blogs`);
 
 
   if (loading) {
@@ -46,7 +46,7 @@ const BlogsListComponent = () => {
                 <button onClick={async ()=>{
                   if(!confirm('Delete this blog?')) return;
                   try{
-                    await axios.delete(`http://localhost:8080/api/blogs/${blogId}`, { withCredentials: true }); // here also
+                    await axios.delete(`${import.meta.env.VITE_API_URL}/api/blogs/${blogId}`, { withCredentials: true }); // here also
                     // window.location.reload();
                   }catch(err){
                     console.error(err);

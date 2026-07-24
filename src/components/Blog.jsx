@@ -5,7 +5,7 @@ import axios from "axios";
 const Blog = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { blog, loading, error } = useFetchBlog(`http://localhost:8080/api/blogs/${id}`);
+  const { blog, loading, error } = useFetchBlog(`${import.meta.env.VITE_API_URL}/api/blogs/${id}`);
 
   if (loading) {
     return <div className="px-4 py-16 text-center text-gray-600">Loading blog...</div>;
@@ -36,7 +36,7 @@ const Blog = () => {
           <button onClick={async ()=>{
             if(!confirm('Delete this blog?')) return;
             try{
-              await axios.delete(`http://localhost:8080/api/blogs/${id}`, { withCredentials: true }); // credencials ?
+              await axios.delete(`${import.meta.env.VITE_API_URL}/api/blogs/${id}`, { withCredentials: true }); // credencials ?
               navigate('/dashboard')
               window.location.reload();
             }catch(err){

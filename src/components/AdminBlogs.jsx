@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import useFetchBlogs from "../customHooks/useFetchBlogs"
 // import axios from "axios";
 const AdminBlogs = () => {
-  const { blogs, loading, error } = useFetchBlogs("http://localhost:8080/api/admin");
+  const { blogs, loading, error } = useFetchBlogs(`${import.meta.env.VITE_API_URL}/api/admin`);
   if (loading) {
     return <div className="mt-8 text-center text-gray-200">Loading blogs...</div>;
   }

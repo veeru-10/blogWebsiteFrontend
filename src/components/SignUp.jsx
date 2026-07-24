@@ -14,7 +14,7 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8080/auth/signup", { name, email, password, role : selectedRole }, { withCredentials: true });
+      await axios.post(`${import.meta.env.VITE_API_URL}/auth/signup`, { name, email, password, role : selectedRole }, { withCredentials: true });
       navigate("/login");
     } catch (err) {
       console.error(err);
