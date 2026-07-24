@@ -9,7 +9,7 @@ import AdminBlogs from "./AdminBlogs";
 
 const Dashboard = () => {
   const { profile } = useContext(AuthContext);
-  const isAdmin = profile.role === "admin";
+  const isAdmin = profile && profile.role === "admin";
   return (
     <div className="min-h-screen">
       {/* <Navbar /> */}
