@@ -56,7 +56,7 @@ const UpdateBlog = () => {
             <input className="w-full text-sm text-gray-600 file:py-2 file:px-4 file:rounded file:border-0 file:bg-amber-100" type="file" name="image" onChange={(e) => setImage(e.target.files[0])} />
             {actualBlog.image && (
               <div className="mt-2">
-                <img src={actualBlog.image.startsWith('http') ? actualBlog.image : `${import.meta.env.VITE_API_URL}/uploads/${actualBlog.image}`} alt="current" className="h-28 object-cover rounded" />
+                <img src={actualBlog.image.startsWith('http') && actualBlog.image} alt="current" className="h-28 object-cover rounded" />
               </div>
             )}
           </div>
