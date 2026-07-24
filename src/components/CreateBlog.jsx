@@ -1,6 +1,7 @@
 import { useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import { LoaderCircle } from "lucide-react"
 
 const CreateBlog = () => {
 
@@ -14,6 +15,8 @@ const CreateBlog = () => {
 
   const navigate = useNavigate();
 
+  const [loading, setLoading] = useState(false)
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -22,7 +25,7 @@ const CreateBlog = () => {
       formData.append("category",category);
       formData.append("description", description);
       if (image) formData.append("image", image);
-
+      setLoading(true)
       await axios.post(`${import.meta.env.VITE_API_URL}/api/blogs`, formData, {
         withCredentials: true, //here also
         headers: { "Content-Type": "multipart/form-data" },
@@ -31,6 +34,7 @@ const CreateBlog = () => {
     } catch (err) {
       console.error(err);
       alert('Failed to create blog');
+      setLoading(false)
     }
   }
 
@@ -58,7 +62,15 @@ const CreateBlog = () => {
               <textarea className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-300 resize-y min-h-25 max-h-50" name="description" placeholder="Overview of your blog..." onChange={(e)=>setDescription(e.target.value)} value={description}></textarea>
             </div>
             <div className="mt-2">
-              <button type="submit" className="px-4 py-2 bg-amber-500 text-white rounded hover:bg-amber-600">Create Blog</button>
+              <button 
+              type="submit" 
+              className="px-4 py-2 bg-amber-500 text-white rounded hover:bg-amber-600 cursor-pointer"
+              disabled={loading}>{loading ? (
+                <div className="flex items-center justify-center gap-2 text-xs">
+                  <span className="animate-spin duration-500"><LoaderCircle/></span>
+                  Creating...
+                </div>
+              ) : 'Create Blog'}</button>
             </div>
           </form>
         </div>

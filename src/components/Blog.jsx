@@ -1,9 +1,12 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import useFetchBlog from "../customHooks/useFetchBlog";
 import axios from "axios";
+import { useState } from "react";
+import {LoaderCircle} from 'lucide-react'
 
 const Blog = () => {
   const { id } = useParams();
+  const [deleting, setDeleting] = useState(false)
   const navigate = useNavigate();
   const { blog, loading, error } = useFetchBlog(`${import.meta.env.VITE_API_URL}/api/blogs/${id}`);
 
@@ -36,14 +39,21 @@ const Blog = () => {
           <button onClick={async ()=>{
             if(!confirm('Delete this blog?')) return;
             try{
+              setDeleting(true)
               await axios.delete(`${import.meta.env.VITE_API_URL}/api/blogs/${id}`, { withCredentials: true }); // credencials ?
               navigate('/dashboard')
-              window.location.reload();
+              // window.location.reload();
             }catch(err){
               console.error(err);
               alert('Failed to delete');
+              setDeleting(false)
             }
-          }} className="px-3 py-1 bg-red-300 rounded cursor-pointer">delete</button>
+          }} className="px-3 py-1 bg-red-300 rounded cursor-pointer">{deleting ? (
+            <div className="flex items-center justify-center gap-2">
+                  <span className="animate-spin duration-500 text-sm"><LoaderCircle/></span>
+                  deleting...
+                </div>
+          ) : "Delete"}</button>
         </div>
       </div>
       <Link to="/dashboard"><h1 className="text-lg my-4 hover:underline self-start">Home</h1></Link>

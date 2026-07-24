@@ -14,3 +14,17 @@
     min-height: 100vh;
   }
 }
+
+/* Change the color of the progress bar */
+/* #nprogress .bar {
+  background: #cc6c13 !important; 
+  height: 3px !important;
+  z-index: 9999 !important;      
+}
+
+/* Change the color of the spinner */
+/* #nprogress .spinner-icon {
+  border-top-color: #cc6c13 !important;
+  border-left-color: #cc6c13  !important;
+  z-index: 9999 !important; 
+}  */

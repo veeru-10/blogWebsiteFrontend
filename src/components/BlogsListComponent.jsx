@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import useFetchBlogs from "../customHooks/useFetchBlogs";
 import axios from 'axios';
+import { useState } from "react";
+import { LoaderCircle } from "lucide-react";
 
 
 const BlogsListComponent = () => {
+  const [deleting, setDeleting] = useState(false)
   const { blogs, loading, error } = useFetchBlogs(`${import.meta.env.VITE_API_URL}/api/blogs`);
 
 
@@ -29,7 +32,7 @@ const BlogsListComponent = () => {
             >
               <Link to={`/blog/${blogId}`}>
                 <div className="w-full rounded-xl h-50 bg-gray-500 flex items-center justify-center overflow-hidden">
-                  <img src={blog.image && blog.image.startsWith('http') && blog.image} className="w-full h-full object-cover" alt={blog.title} />
+                  {blog.image ? <img src={blog.image.startsWith('http') && blog.image} className="w-full h-full object-cover" alt={blog.title} /> : <p className="text-white/70">No image</p> }
                 </div>
               </Link>
               <p className="text-sm font-semibold uppercase tracking-wide text-amber-600 mt-4">
@@ -46,13 +49,23 @@ const BlogsListComponent = () => {
                 <button onClick={async ()=>{
                   if(!confirm('Delete this blog?')) return;
                   try{
+                    setDeleting(true)
                     await axios.delete(`${import.meta.env.VITE_API_URL}/api/blogs/${blogId}`, { withCredentials: true }); // here also
-                    // window.location.reload();
+                    window.location.reload();
                   }catch(err){
                     console.error(err);
                     alert('Failed to delete');
+                    setDeleting(false)
                   }
-                }} className="px-3 py-1 bg-red-300 rounded cursor-pointer">delete</button>
+                }} className="px-3 py-1 bg-red-300 rounded cursor-pointer"
+                disabled={deleting}>
+                  {deleting ? (
+                    <div className="flex items-center justify-center gap-2">
+                          <span className="animate-spin duration-500 text-sm"><LoaderCircle/></span>
+                          deleting...
+                        </div>
+                  ) : "Delete"}
+                </button>
               </div>
             </div>
           );

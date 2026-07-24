@@ -1,8 +1,9 @@
 import { useContext, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import { Eye, EyeClosed } from "lucide-react";
+import { Eye, EyeClosed, Loader } from "lucide-react";
 import AuthContext from "./AuthContext";
+
 
 
 
@@ -10,18 +11,21 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { refreshUser } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true)
       await axios.post(`${import.meta.env.VITE_API_URL}/auth/login`, { email, password }, { withCredentials: true });
       await refreshUser();
       navigate("/dashboard");
     } catch (err) {
       console.error(err);
       alert("Login failed");
+      setLoading(false);
     }
   };
   return (
@@ -63,9 +67,17 @@ const Login = () => {
             </div>
             <button
               type="submit"
+              disabled={loading}
               className="w-full rounded-full bg-amber-600 px-4 py-2 font-medium text-white transition hover:bg-amber-700 cursor-pointer"
             >
-              Login
+              {loading ? (
+                <div className="flex items-center justify-center gap-2">
+                  <span className="animate-spin duration-500"><Loader/></span>
+                  Loging in...
+                </div>
+              ) : (
+                "Login"
+              )}
             </button>
           </form>
         </div>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { Eye, EyeClosed } from 'lucide-react'
+import { Eye, EyeClosed, LoaderCircle } from 'lucide-react'
 
 const SignUp = () => {
   const [name, setName] = useState("");
@@ -10,15 +10,18 @@ const SignUp = () => {
   const [selectedRole, setSelectedRole] = useState("user");
   const [showPassword, setShowPassword] = useState(false)
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true)
       await axios.post(`${import.meta.env.VITE_API_URL}/auth/signup`, { name, email, password, role : selectedRole }, { withCredentials: true });
       navigate("/login");
     } catch (err) {
       console.error(err);
       alert("Sign up failed");
+      setLoading(false);
     }
   };
 
@@ -79,9 +82,17 @@ const SignUp = () => {
             </div>
             <button
               type="submit"
+              disabled={loading}
               className="w-full rounded-full bg-black px-4 py-2 font-medium text-white transition hover:bg-gray-800 cursor-pointer"
             >
-              Sign Up
+              {loading ? (
+                <div className="flex items-center justify-center gap-2">
+                  <span className="animate-spin duration-500"><LoaderCircle /></span>
+                  Signing Up...
+                </div>
+              ) : (
+                "Sign Up"
+              )}
             </button>
           </form>
         </div>
