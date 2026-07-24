@@ -20,7 +20,7 @@ const Blog = () => {
     <div className="min-h-screen px-4 flex flex-col items-center justify-center">
       <div className="mx-auto rounded-2xl border border-white p-8 shadow-lg max-w-lg space-y-2">
         <div className="flex items-center justify-center overflow-hidden">
-          <img src={`http://localhost:8080/uploads/${actualBlog.image}`} alt={actualBlog.title} className="object-cover" />
+          <img src={actualBlog.image && actualBlog.image.startsWith('http') ? actualBlog.image : `${import.meta.env.VITE_API_URL}/uploads/${actualBlog.image}`} alt={actualBlog.title} className="object-cover" />
         </div>
         <p className="text-sm font-semibold uppercase tracking-wide text-amber-600">
           {actualBlog?.category || "Blog"}

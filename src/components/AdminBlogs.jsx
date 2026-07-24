@@ -21,7 +21,7 @@ const AdminBlogs = () => {
                 className="rounded-2xl border-amber-200 bg-white p-3 text-left shadow-sm transition hover:shadow-md space-y-2">
                 {/* <Link to={`/blog/${blog._id}`}></Link> */}
                 <div className="w-full rounded-xl h-50 bg-gray-500 flex items-center justify-center overflow-hidden">
-                  <img src={`http://localhost:8080/uploads/${blog.image}`} className="w-full h-full object-cover" alt={blog.title} />
+                  <img src={blog.image && blog.image.startsWith('http') ? blog.image : `${import.meta.env.VITE_API_URL}/uploads/${blog.image}`} className="w-full h-full object-cover" alt={blog.title} />
                 </div>
                 <p className="text-sm font-semibold uppercase tracking-wide text-amber-600 mt-4">
                   {blog.category || "Blog"}

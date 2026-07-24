@@ -29,7 +29,7 @@ const BlogsListComponent = () => {
             >
               <Link to={`/blog/${blogId}`}>
                 <div className="w-full rounded-xl h-50 bg-gray-500 flex items-center justify-center overflow-hidden">
-                  <img src={`http://localhost:8080/uploads/${blog.image}`} className="w-full h-full object-cover" alt={blog.title} />
+                  <img src={blog.image && blog.image.startsWith('http') ? blog.image : `${import.meta.env.VITE_API_URL}/uploads/${blog.image}`} className="w-full h-full object-cover" alt={blog.title} />
                 </div>
               </Link>
               <p className="text-sm font-semibold uppercase tracking-wide text-amber-600 mt-4">
