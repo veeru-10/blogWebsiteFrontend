@@ -7,7 +7,7 @@ function useFetchBlogs(url) {
   async function getData() {
     try {
       const res = await fetch(url, { credentials: "include" });
-      if (!res.ok) throw new Error("Failed to fetch food data");
+      if (!res.ok) throw new Error("Failed to fetch blog data");
       const resData = await res.json();
       setBlogs(resData);
     } catch (error) {

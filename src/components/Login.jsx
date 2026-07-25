@@ -24,7 +24,7 @@ const Login = () => {
       navigate("/dashboard");
     } catch (err) {
       console.error(err);
-      alert("Login failed");
+      alert("Login failed, enter valid credentials");
       setLoading(false);
     }
   };
