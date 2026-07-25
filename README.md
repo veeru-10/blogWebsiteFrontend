@@ -1,16 +1,34 @@
-# React + Vite
+# BLOG WEBSITE
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> A place People can read and write their tech ideas or latest updates.
 
-Currently, two official plugins are available:
+# Live prview
+- visit URL - https://blog-website-frontend-green-chi.vercel.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## React Compiler
+## 📌 Description
+In Every Website we see user profiles, cart items, whatsup chat messages are giving access to users to update their profiles. Therefore, i have built the Same logic for providing access to users to manage their blogs and admins can view user actions. 
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Features
+- Feature 1: Implemented authentication and authorization using JWT
+- Feature 2: Used multer for File Uploading and cloudinary for storing images
+- Feature 3: Provided RBAC for the website
 
-## Expanding the ESLint configuration
+## 🛠️ Built With
+- Language: JavaScript
+- Framework: Tailwind CSS, Express JS
+- Library: React JS
+- Database: MonogDB
+- ODM: Mongoose
+- runtime environment: Node JS
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🤝 Contributing
+Contributions are welcome! Please follow these quick steps:
+1. Fork the BlogFrontend and BlogBackend repos in my repositories page.
+2. Create your Feature Branch (`git checkout -b feature`).
+3. Commit your Changes (`git commit -m 'Add'`).
+4. Push to the Branch (`git push origin feature`).
+5. Open a Pull Request.
+
+## 📄 License
+Distributed under the MIT License. See `LICENSE` for more information.
