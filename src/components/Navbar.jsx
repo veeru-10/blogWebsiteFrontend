@@ -39,7 +39,7 @@ const Navbar = () => {
       {/* sticky top-0 */}
       <nav className={`fixed left-0 right-0 top-0 z-50 p-4 flex justify-between items-center bg-gray-900/10 w-full ${isScrolled ? 'h-16 bg-white/20 backdrop-blur-md border-b border-gray-200/50 shadow-sm' : 'h-20 bg-transparent'}`}>
         <Link to={profile ? '/dashboard' : '/'}>
-          <h1 className="font-semibold text-2xl">Blog Posts <span className="text-amber-700">App</span></h1>
+          <h1 className="font-semibold text-2xl">Blog  <span className="text-amber-700">Website</span></h1>
         </Link>
         {profile ? (
           <div className="relative" ref={dropDownRef}>
