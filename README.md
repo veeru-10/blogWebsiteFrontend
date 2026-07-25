@@ -1,26 +1,37 @@
-# BLOG WEBSITE
+# 🌐 Tech Blog Website
 
-> A place People can read and write their tech ideas or latest updates.
+A full-stack MERN application where users can seamlessly read and share their tech ideas or latest updates, complete with secure authentication and an administrative overview panel.
 
-# Live prview
-- visit URL - https://blog-website-frontend-green-chi.vercel.app/
+🌐 **Live Demo:** [View Live Site](https://blog-website-frontend-green-chi.vercel.app/)
 
+---
 
 ## 📌 Description
-In Every Website we see user profiles, cart items, whatsup chat messages are giving access to users to update their profiles. Therefore, i have built the Same logic for providing access to users to manage their blogs and admins can view user actions. 
+Modern web applications require robust user access controls. This project features a dynamic, role-based access system where registered users can securely create, edit, and manage their own tech blogs, while an admin panel allows complete visibility over user actions and activities.
 
-## 🚀 Features
-- Feature 1: Implemented authentication and authorization using JWT
-- Feature 2: Used multer for File Uploading and cloudinary for storing images
-- Feature 3: Provided RBAC for the website
+## 🚀 Key Features
+- **Secure Authentication & Authorization:** Implemented securely using JSON Web Tokens (JWT).
+- **Media Uploads & Storage:** Handled dynamically via Multer for file processing and Cloudinary for cloud image hosting.
+- **Role-Based Access Control (RBAC):** Restricts or grants access across a secure permission hierarchy differentiating standard users from administrators.
 
-## 🛠️ Built With
-- Language: JavaScript
-- Framework: Tailwind CSS, Express JS
-- Library: React JS
-- Database: MonogDB
-- ODM: Mongoose
-- runtime environment: Node JS
+## 🛠️ Tech Stack
+
+### Frontend
+- **Language:** JavaScript
+- **Library:** React.js
+- **Styling:** Tailwind CSS
+
+### Backend
+- **Runtime Environment:** Node.js
+- **Framework:** Express.js
+- **Database:** MongoDB
+- **ODM:** Mongoose
+
+---
+
+## 💻 Repository Links
+- **Frontend Codebase:** [blogWebsiteFrontend](https://github.com/veeru-10/blogWebsiteFrontend)
+- **Backend Codebase:** [blogWebsiteBackend](https://github.com/veeru-10/blogWebsiteBackend)
 
 ## 🤝 Contributing
 Contributions are welcome! Please follow these quick steps:
@@ -31,4 +42,4 @@ Contributions are welcome! Please follow these quick steps:
 5. Open a Pull Request.
 
 ## 📄 License
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the MIT License.
