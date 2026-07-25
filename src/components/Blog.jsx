@@ -42,7 +42,7 @@ const Blog = () => {
               setDeleting(true)
               await axios.delete(`${import.meta.env.VITE_API_URL}/api/blogs/${id}`, { withCredentials: true }); // credencials ?
               navigate('/dashboard')
-              // window.location.reload();
+              window.location.reload();
             }catch(err){
               console.error(err);
               alert('Failed to delete');

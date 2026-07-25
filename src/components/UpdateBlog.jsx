@@ -8,9 +8,9 @@ import {LoaderCircle} from 'lucide-react'
 const UpdateBlog = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { blog, loading, error } = useFetchBlog(`${import.meta.env.VITE_API_URL}/api/blogs/${id}`);
+  const { blog, loading, error } = useFetchBlog(`${import.meta.env.VITE_API_URL}/api/blogs/${id}`); // it is blank
 
-  const actualBlog = blog?.blog || {};
+  const actualBlog = blog?.blog || {}; 
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -18,6 +18,7 @@ const UpdateBlog = () => {
   const [image, setImage] = useState(null);
   const [updatingSpinner, setUpdateingSpinner] = useState(false);
 
+  //when actual data changes it triggers useeffect
   useEffect(()=>{
     if (actualBlog) {
       setTitle(actualBlog.title);
